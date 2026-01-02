@@ -5,6 +5,7 @@ void main() {
   runApp(
     const MaterialApp(
       home: Expenses(), //Todo: Add main Widget here,
+      debugShowCheckedModeBanner: false,
     ),
   );
 }
