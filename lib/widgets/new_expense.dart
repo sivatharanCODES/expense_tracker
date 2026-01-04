@@ -18,6 +18,13 @@ class _NewExpenseState extends State<NewExpense> {
   // }
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    _amountController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -31,9 +38,7 @@ class _NewExpenseState extends State<NewExpense> {
         TextField(
           maxLength: 50,
           controller: _amountController,
-          keyboardType: const TextInputType.numberWithOptions(
-            decimal: true,
-          ),
+          keyboardType: TextInputType.number,
           decoration: const InputDecoration(
             label: Text('Amount'),
           ),
@@ -55,7 +60,9 @@ class _NewExpenseState extends State<NewExpense> {
               width: 12,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               child: const Text('Cancel'),
             ),
           ],

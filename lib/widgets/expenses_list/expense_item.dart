@@ -29,7 +29,7 @@ class ExpenseItem extends StatelessWidget {
                 Row(
                   children: [
                     Icon(
-                      CategoryIcons[expense.category],
+                      categoryIcons[expense.category],
                     ),
                     const SizedBox(
                       width: 8,
