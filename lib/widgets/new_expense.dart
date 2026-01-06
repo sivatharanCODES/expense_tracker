@@ -35,6 +35,33 @@ class _NewExpenseState extends State<NewExpense> {
     });
   }
 
+  void _submitExpenses() {
+    double? enteredAmount = double.tryParse(_amountController.text);
+    bool invalidAmount = enteredAmount == null || enteredAmount <= 0;
+    if (_titleController.text.trim().isEmpty ||
+        invalidAmount ||
+        _selectedDate == null) {
+      // show alert
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Invalid input'),
+          content: const Text(
+            'Please make sure a valid title, amount, date and category was entered.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: const Text('Okey'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
   @override
   void dispose() {
     _titleController.dispose();
@@ -113,16 +140,9 @@ class _NewExpenseState extends State<NewExpense> {
                   });
                 },
               ),
-              Spacer(),
+              const Spacer(),
               ElevatedButton(
-                onPressed: () {
-                  print(
-                    _titleController.text,
-                  );
-                  print(
-                    _amountController.text,
-                  );
-                },
+                onPressed: _submitExpenses,
                 child: const Text('Save Expense'),
               ),
               const SizedBox(
