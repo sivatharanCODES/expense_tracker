@@ -34,7 +34,7 @@ class _ExpensesState extends State<Expenses> {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
-      // useSafeArea: true,
+      useSafeArea: true,
       // constraints: BoxConstraints(
       //   maxWidth: MediaQuery.of(context).size.width,
       // ),
