@@ -35,9 +35,9 @@ class _ExpensesState extends State<Expenses> {
       isScrollControlled: true,
       context: context,
       useSafeArea: true,
-      // constraints: BoxConstraints(
-      //   maxWidth: MediaQuery.of(context).size.width,
-      // ),
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width,
+      ),
       builder: (ctx) => SizedBox(
         child: NewExpense(onAddExpense: _addExpense),
       ),
